@@ -35,7 +35,7 @@ console.log(sumAndProduct(1, 2, 5));
 // Return the argument rounded up to the nearest integer
 //
 // See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/ceil
-const roundUp = (decimal) => Math.ceil(decimal);
+const roundUp = decimal => Math.ceil(decimal);
 
 console.log(roundUp(2.345));
 
@@ -45,7 +45,7 @@ console.log(roundUp(2.345));
 // Return the argument converted to Fahrenheit rounded to the nearest integer.
 // Use Google to find the formula.
 
-const toFahrenheit = (celsius) => celsius * 1.8 + 32;
+const toFahrenheit = celsius => celsius * 1.8 + 32;
 
 console.log(toFahrenheit(19));
 
@@ -69,9 +69,9 @@ console.log(areaOfCircle(3));
 // the formula.
 
 const areaOfRing = (outerRadius, innerRadius) => {
-    let outerArea = (Math.pow(outerRadius, 2) * Math.PI);
-    let innerArea = (Math.pow(innerRadius, 2) * Math.PI);
-    return (outerArea - innerArea);
+    let outerArea = Math.pow(outerRadius, 2) * Math.PI;
+    let innerArea = Math.pow(innerRadius, 2) * Math.PI;
+    return outerArea - innerArea;
 };
 
 console.log(areaOfRing(3, 2));
@@ -408,13 +408,13 @@ console.log(iceCreamPosition("warm", "chocolate"));
 //
 // See: https://en.wikipedia.org/wiki/Leap_year#Algorithm
 
-const isLeapYear = (year) => {
-    if (((year % 4 === 0) && (year % 100 !== 0)) || (year % 400 === 0)) {
+const isLeapYear = year => {
+    if ((year % 4 === 0 && year % 100 !== 0) || year % 400 === 0) {
         return true;
     } else {
         return false;
     }
-}
+};
 
 console.log(isLeapYear(1400));
 
@@ -426,7 +426,7 @@ console.log(isLeapYear(1400));
 //
 // See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String
 
-const shout = (message) => message.toUpperCase();
+const shout = message => message.toUpperCase();
 
 console.log(shout("shut the front door"));
 
@@ -434,11 +434,11 @@ console.log(shout("shut the front door"));
 //    message (string)
 //
 // Return the same argument but all in lowercase letters and prefixed by
-// 'shhh... '. For exaple, given 'GOLF TIME', then return "shhh... golf time"
+// 'shhh... '. For example, given 'GOLF TIME', then return "shhh... golf time"
 //
 // See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String
 
-const whisper = (message) => `shh... ${message.toLowerCase()}`;
+const whisper = message => `shh... ${message.toLowerCase()}`;
 
 console.log(whisper("GOLF TIME"));
 
@@ -462,7 +462,7 @@ const stopAt = (source, stop) => {
     let newString = source.substring(0, stringIndex);
     let stringTrim = newString.trim();
     return stringTrim;
-}
+};
 
 console.log(stopAt("how now brown cow", "brown"));
 
@@ -474,12 +474,12 @@ console.log(stopAt("how now brown cow", "brown"));
 //
 // See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/substring
 
-const capitalize = (message) => {
+const capitalize = message => {
     let first = message[0].toUpperCase();
     let length = message.length;
     let newString = first + message.slice(1, length);
     return newString;
-}
+};
 
 console.log(capitalize("oh, you"));
 
@@ -491,9 +491,9 @@ console.log(capitalize("oh, you"));
 // If the argument's length is 5 or more characters
 //    Return the argument
 
-const leftPad5 = (word) => {
+const leftPad5 = word => {
     return word.padStart(5);
-}
+};
 
 console.log(leftPad5("hi"));
 
@@ -507,14 +507,14 @@ console.log(leftPad5("hi"));
 //
 // See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof
 
-const superPicky = (value) => {
+const superPicky = value => {
     let enteredData = typeof value;
     if (enteredData === "string") {
-        return "Thanks! Got it"
+        return "Thanks! Got it";
     } else {
-        return `I wanted a string, but all I got was stinking ${enteredData}.`
+        return `I wanted a string, but all I got was stinking ${enteredData}.`;
     }
-}
+};
 
 console.log(superPicky(4));
 
@@ -528,3 +528,26 @@ console.log(superPicky(4));
 //    Return a string that says 'Better call an accountant'
 // Otherwise
 //    Return the correct tax rate as a string using the table from http://www.efile.com/tax-service/tax-calculator/tax-brackets/
+
+const calculateTaxRate = (salary, status) => {
+    if (salary > 74900) {
+        return "Better call an accountant";
+    }
+    if (status === "single") {
+        if (salary < 9375) {
+            var taxRate = `$${salary * 0.1}`;
+        } else if (salary < 37950) {
+            taxRate = `$${salary * 0.15}`;
+        } else {
+            taxRate = `$${salary * 0.25}`;
+        }
+    } else if (status === "joint") {
+        if (salary < 18650) {
+            taxRate = `$${salary * 0.1}`;
+        } else {
+            taxRate = `$${salary * 0.15}`;
+        }
+    }
+    return taxRate;
+};
+console.log(calculateTaxRate(30000, "joint"));

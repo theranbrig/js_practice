@@ -3,9 +3,8 @@
 //    b (number)
 //
 // Return the sum of these two arguments
-function sum(a, b) {
-    return a + b;
-}
+const sum = (a, b) => a + b;
+
 console.log(sum(3, 4));
 
 // Define a function named product that takes two arguments
@@ -13,9 +12,7 @@ console.log(sum(3, 4));
 //    b (number)
 //
 // Return the product of these two arguments
-function product(a, b) {
-    return a * b;
-}
+const product = (a, b) => a * b;
 
 console.log(product(3, 4));
 
@@ -28,9 +25,7 @@ console.log(product(3, 4));
 // For example, given 1, 2, and 5, then return 15.
 //
 // See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Grouping
-function sumAndProduct(x, y, z) {
-    return (x + y) * z;
-}
+const sumAndProduct = (x, y, z) => (x + y) * z;
 
 console.log(sumAndProduct(1, 2, 5));
 
@@ -40,9 +35,7 @@ console.log(sumAndProduct(1, 2, 5));
 // Return the argument rounded up to the nearest integer
 //
 // See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/ceil
-function roundUp(decimal) {
-    return Math.ceil(decimal);
-}
+const roundUp = (decimal) => Math.ceil(decimal);
 
 console.log(roundUp(2.345));
 
@@ -52,9 +45,7 @@ console.log(roundUp(2.345));
 // Return the argument converted to Fahrenheit rounded to the nearest integer.
 // Use Google to find the formula.
 
-function toFahrenheit(celsius) {
-    return celsius * 1.8 + 32;
-}
+const toFahrenheit = (celsius) => celsius * 1.8 + 32;
 
 console.log(toFahrenheit(19));
 
@@ -66,9 +57,7 @@ console.log(toFahrenheit(19));
 //
 // See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/PI
 
-const areaOfCircle = radius => {
-    return Math.pow(radius, 2) * Math.PI;
-};
+const areaOfCircle = radius => Math.pow(radius, 2) * Math.PI;
 
 console.log(areaOfCircle(3));
 
@@ -80,9 +69,9 @@ console.log(areaOfCircle(3));
 // the formula.
 
 const areaOfRing = (outerRadius, innerRadius) => {
-    return (
-        Math.pow(outerRadius, 2) * Math.PI - Math.pow(innerRadius, 2) * Math.PI
-    );
+    let outerArea = (Math.pow(outerRadius, 2) * Math.PI);
+    let innerArea = (Math.pow(innerRadius, 2) * Math.PI);
+    return (outerArea - innerArea);
 };
 
 console.log(areaOfRing(3, 2));
@@ -95,9 +84,7 @@ console.log(areaOfRing(3, 2));
 //
 // See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String#Template_strings
 
-const greet = (firstName, lastName) => {
-    return `Hello ${firstName} ${lastName}!`;
-};
+const greet = (firstName, lastName) => `Hello ${firstName} ${lastName}!`;
 
 console.log(greet("Theran", "Brigowatz"));
 // Define a function named toSentence that takes four arguments
@@ -190,9 +177,7 @@ console.log(toRoman(5));
 //
 // See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toFixed
 
-const toDolla = amount => {
-    return `$${amount.toFixed(2)}`;
-};
+const toDolla = amount => `$${amount.toFixed(2)}`;
 
 console.log(toDolla(8.543223));
 
@@ -263,9 +248,7 @@ console.log(isLooselyEqual("5", 5));
 //
 // See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Arithmetic_Operators#Remainder_()
 
-const remainder = (numerator, denominator) => {
-    return numerator % denominator;
-};
+const remainder = (numerator, denominator) => numerator % denominator;
 
 console.log(remainder(12, 7));
 
@@ -425,6 +408,16 @@ console.log(iceCreamPosition("warm", "chocolate"));
 //
 // See: https://en.wikipedia.org/wiki/Leap_year#Algorithm
 
+const isLeapYear = (year) => {
+    if (((year % 4 === 0) && (year % 100 !== 0)) || (year % 400 === 0)) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+console.log(isLeapYear(1400));
+
 // Define a function named shout that takes one argument
 //    message (string)
 //
@@ -433,6 +426,10 @@ console.log(iceCreamPosition("warm", "chocolate"));
 //
 // See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String
 
+const shout = (message) => message.toUpperCase();
+
+console.log(shout("shut the front door"));
+
 // Define a function named whisper that takes one argument
 //    message (string)
 //
@@ -440,6 +437,10 @@ console.log(iceCreamPosition("warm", "chocolate"));
 // 'shhh... '. For exaple, given 'GOLF TIME', then return "shhh... golf time"
 //
 // See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String
+
+const whisper = (message) => `shh... ${message.toLowerCase()}`;
+
+console.log(whisper("GOLF TIME"));
 
 // Define a function named stopAt that takes two arguments
 //   source (string)
@@ -456,6 +457,15 @@ console.log(iceCreamPosition("warm", "chocolate"));
 //
 // See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/Trim
 
+const stopAt = (source, stop) => {
+    let stringIndex = source.indexOf(stop);
+    let newString = source.substring(0, stringIndex);
+    let stringTrim = newString.trim();
+    return stringTrim;
+}
+
+console.log(stopAt("how now brown cow", "brown"));
+
 // Define a function named capitalize that takes one argument
 //    message (string)
 //
@@ -464,6 +474,15 @@ console.log(iceCreamPosition("warm", "chocolate"));
 //
 // See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/substring
 
+const capitalize = (message) => {
+    let first = message[0].toUpperCase();
+    let length = message.length;
+    let newString = first + message.slice(1, length);
+    return newString;
+}
+
+console.log(capitalize("oh, you"));
+
 // Define a function named leftPad5 that takes one argument
 //    word (string)
 //
@@ -471,6 +490,12 @@ console.log(iceCreamPosition("warm", "chocolate"));
 //    Return the argument but prefixed with spaces until it's 5 characters long
 // If the argument's length is 5 or more characters
 //    Return the argument
+
+const leftPad5 = (word) => {
+    return word.padStart(5);
+}
+
+console.log(leftPad5("hi"));
 
 // Define a function named superPicky that takes one argument
 //    value (anything)
@@ -481,6 +506,17 @@ console.log(iceCreamPosition("warm", "chocolate"));
 //    Return 'I wanted a string, but all I got was a stinking TYPE'
 //
 // See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof
+
+const superPicky = (value) => {
+    let enteredData = typeof value;
+    if (enteredData === "string") {
+        return "Thanks! Got it"
+    } else {
+        return `I wanted a string, but all I got was stinking ${enteredData}.`
+    }
+}
+
+console.log(superPicky(4));
 
 // Define a function named calculateTaxRate that takes two arguments
 //    salary (number from 1 to 74,900)
